@@ -1,0 +1,36 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY tbtwo_process_fsm IS
+END tbtwo_process_fsm;
+
+ARCHITECTURE Structure OF tbtwo_process_fsm IS
+
+COMPONENT two_process_fsm IS
+	PORT(w, clock, reset : IN STD_LOGIC;
+	     y : BUFFER STD_LOGIC_VECTOR(8 DOWNTO 0);
+		  z : OUT STD_LOGIC);
+END COMPONENT;
+
+SIGNAL w_dut, clock_dut, reset_dut : STD_LOGIC;
+SIGNAL y_dut : STD_LOGIC_VECTOR(8 DOWNTO 0);
+SIGNAL z_dut : STD_LOGIC;
+
+BEGIN
+
+PROCESS 
+	BEGIN
+		clock_dut <= '0';
+		WAIT FOR 100 ns;
+		clock_dut <= '1';
+		WAIT FOR 100 ns;
+		
+END PROCESS;
+
+   reset_dut <= '0' , '1' after 200 ns;
+ 
+   w_dut <= '0' , '1' after 400 ns , '0' after 800 ns , '1' after 1600 ns;
+
+dut : two_process_fsm PORT MAP (w => w_dut, clock => clock_dut, reset => reset_dut, y => y_dut, z => z_dut);
+
+END Structure;
