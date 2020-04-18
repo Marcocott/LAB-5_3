@@ -9,8 +9,6 @@ END two_process_fsm;
 
 ARCHITECTURE Behavior OF two_process_fsm IS
 
-. . . declare signals
-
 TYPE State_type IS (A, B, C, D, E, F, G, H, I);
 
 SIGNAL y_Q, Y_D : State_type; -- y_Q is present state, y_D is next state
@@ -111,20 +109,59 @@ FSM_OUTPUTS:
 		BEGIN
 		
 			z <= '0';
+			y <= (OTHERS => '0');
 			
 		CASE y_Q IS
 	
-			WHEN A | B | C | D | F | G | H =>
+			WHEN A =>
 			
 			z <= '0';
+			y(0) <= 1;
 			
-			WHEN 	I | E => 
+			WHEN B =>
+			
+			z <= '0';
+			y(1) <= 1;
+			
+			WHEN C =>
+			
+			z <= '0';
+			y(2) <= 1;
+			
+			WHEN D =>
+			
+			z <= '0';
+			y(3) <= 1;
+			
+			WHEN E =>
 			
 			z <= '1';
+			y(4) <= 1;
+			
+			WHEN F =>
+			
+			z <= '0';
+			y(5) <= 1;
+			
+			WHEN G =>
+			
+			z <= '0';
+			y(6) <= 1;
+			
+			WHEN H =>
+			
+			z <= '0';
+			y(7) <= 1;
+			
+			WHEN I => 
+			
+			z <= '1';
+			y(8) <= 1;
 			
 			WHEN OTHERS =>	
 			
 			z <= '0';
+			y <= (OTHERS => '0');
 		
 	   END CASE;
 		
