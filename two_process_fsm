@@ -72,9 +72,9 @@ NEXT_STATE_EVALUATION:
 					 END IF;
 	
       WHEN I => IF (w = '0') THEN
-		             Y_D <= I;
+		             Y_D <= B;
 					 ELSE
-						 Y_D <= B;
+						 Y_D <= I;
 					 END IF;	
 		
       WHEN OTHERS => Y_D <= A;
