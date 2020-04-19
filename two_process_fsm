@@ -32,7 +32,7 @@ NEXT_STATE_EVALUATION:
 		WHEN B => IF (w = '0') THEN
 		             Y_D <= C;
 					 ELSE
-						 Y_D <= E;
+						 Y_D <= F;
 					 END IF;
 		
 		WHEN C => IF (w = '0') THEN 
